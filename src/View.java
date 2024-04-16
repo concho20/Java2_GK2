@@ -29,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Component;
+import javax.swing.border.LineBorder;
 
 
 
@@ -186,8 +187,8 @@ public class View extends JFrame {
 		panel_1.setLayout(null);
 		
 		QL_Order = new JButton("ORDERS");
-		QL_Order.setForeground(Color.WHITE);
 		QL_Order.setFont(new Font("Tahoma", Font.BOLD, 15));
+		QL_Order.setForeground(Color.WHITE);
 		QL_Order.setBackground(new Color(0, 124, 217));
 		QL_Order.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -200,8 +201,8 @@ public class View extends JFrame {
 		panel_1.add(QL_Order);
 		
 		QL_Kho = new JButton("QL KHO");
-		QL_Kho.setForeground(Color.WHITE);
 		QL_Kho.setFont(new Font("Tahoma", Font.BOLD, 15));
+		QL_Kho.setForeground(Color.WHITE);
 		QL_Kho.setBackground(new Color(0, 124, 217));
 		QL_Kho.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -214,8 +215,8 @@ public class View extends JFrame {
 		panel_1.add(QL_Kho);
 		
 		QL_NV = new JButton("QL NHÂN VIÊN");
-		QL_NV.setForeground(Color.WHITE);
 		QL_NV.setFont(new Font("Tahoma", Font.BOLD, 15));
+		QL_NV.setForeground(Color.WHITE);
 		QL_NV.setBackground(new Color(0, 124, 217));
 		QL_NV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -608,7 +609,7 @@ public class View extends JFrame {
 		panel_tang.setBackground(new Color(30, 144, 255));
 		panel_tang.setLayout(null);
 		
-		bt_Tang1 = new JButton(" TẦNG 1");
+		bt_Tang1 = new JButton("TẦNG 1");
 		bt_Tang1.setForeground(Color.WHITE);
 		bt_Tang1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		bt_Tang1.setBackground(new Color(30, 144, 255));
@@ -651,7 +652,7 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(false);
 			}
 		});
-		bt_Nuoc.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_Nuoc.setFont(new Font("Tahoma", Font.BOLD, 18));
 		bt_Nuoc.setBackground(new Color(30, 144, 255));
 		bt_Nuoc.setBounds(0, 0, 152, 48);
 		panel_Mon.add(bt_Nuoc);
@@ -667,7 +668,7 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(false);
 			}
 		});
-		bt_Nuong.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_Nuong.setFont(new Font("Tahoma", Font.BOLD, 18));
 		bt_Nuong.setBackground(new Color(30, 144, 255));
 		bt_Nuong.setBounds(152, 0, 152, 48);
 		panel_Mon.add(bt_Nuong);
@@ -683,7 +684,7 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(false);
 			}
 		});
-		bt_Lau.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_Lau.setFont(new Font("Tahoma", Font.BOLD, 18));
 		bt_Lau.setBackground(new Color(30, 144, 255));
 		bt_Lau.setBounds(304, 0, 152, 48);
 		panel_Mon.add(bt_Lau);
@@ -699,7 +700,7 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(false);
 			}
 		});
-		bt_MonChinh.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_MonChinh.setFont(new Font("Tahoma", Font.BOLD, 18));
 		bt_MonChinh.setBackground(new Color(30, 144, 255));
 		bt_MonChinh.setBounds(456, 0, 152, 48);
 		panel_Mon.add(bt_MonChinh);
@@ -715,9 +716,9 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(true);
 			}
 		});
-		bt_TrangMieng.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_TrangMieng.setFont(new Font("Tahoma", Font.BOLD, 18));
 		bt_TrangMieng.setBackground(new Color(30, 144, 255));
-		bt_TrangMieng.setBounds(608, 0, 195, 48);
+		bt_TrangMieng.setBounds(608, 0, 180, 48);
 		panel_Mon.add(bt_TrangMieng);
 		
 		cardPanel_mon = new JPanel();
@@ -1065,6 +1066,8 @@ public class View extends JFrame {
 		panel_Nuoc.add(bt_Nuoc8);
 		
 		card_Panel_bill = new JPanel();
+		card_Panel_bill.setBorder(new LineBorder(new Color(0, 90, 180), 5));
+		card_Panel_bill.setBackground(Color.WHITE);
 		card_Panel_bill.setBounds(1070, 0, 490, 655);
 		cardPanel_TrangOder.add(card_Panel_bill);
 		card_Panel_bill.setLayout(null);
@@ -1098,7 +1101,7 @@ public class View extends JFrame {
 		card_Panel_bill.add(lbl_tenNhaHang);
 		
 		scrollPane_bill = new JScrollPane();
-		scrollPane_bill.setBounds(0, 251, 490, 404);
+		scrollPane_bill.setBounds(5, 261, 490, 404);
 		card_Panel_bill.add(scrollPane_bill);
 		
 		table_bill = new JTable();
