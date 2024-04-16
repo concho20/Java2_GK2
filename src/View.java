@@ -237,7 +237,7 @@ public class View extends JFrame {
 		
 		panel_tang1 = new JPanel();
 		panel_tang1.setLayout(null);
-		panel_tang1.setBackground(Color.RED);
+		panel_tang1.setBackground(new Color(0, 255, 255));
 		cardPanel_tang.add(panel_tang1, "name_1003797966362000");
 		panel_tang1.setVisible(true);
 		
@@ -1160,7 +1160,7 @@ public class View extends JFrame {
 		cardPanel_Kho.setVisible(false);
 		
 		cardPanel_QLNV = new JPanel();
-		cardPanel_QLNV.setBackground(new Color(0, 255, 0));
+		cardPanel_QLNV.setBackground(new Color(0, 0, 255));
 		cardPanel_QLNV.setLayout(null);
 		cardPanel_2.add(cardPanel_QLNV, "name_1003617377031400");
 		cardPanel_QLNV.setVisible(false);
@@ -1335,6 +1335,7 @@ public class View extends JFrame {
         panel_2.add(lbl_BangLuong);
         
         JButton bt_COng = new JButton("+\r\n");
+        bt_COng.setBackground(new Color(240, 240, 240));
         bt_COng.setBounds(674, 38, 53, 32);
         panel_2.add(bt_COng);
         bt_COng.addActionListener(new ActionListener() {
