@@ -180,12 +180,15 @@ public class View extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(0, 124, 217));
 		panel_1.setBounds(0, 0, 1560, 50);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		QL_Order = new JButton("Trang Order");
-		QL_Order.setBackground(new Color(255, 0, 0));
+		QL_Order = new JButton("ORDERS");
+		QL_Order.setForeground(Color.WHITE);
+		QL_Order.setFont(new Font("Tahoma", Font.BOLD, 15));
+		QL_Order.setBackground(new Color(0, 124, 217));
 		QL_Order.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cardPanel_TrangOder.setVisible(true);
@@ -196,8 +199,10 @@ public class View extends JFrame {
 		QL_Order.setBounds(0, 0, 192, 50);
 		panel_1.add(QL_Order);
 		
-		QL_Kho = new JButton("Trang QL Kho");
-		QL_Kho.setBackground(new Color(0, 128, 255));
+		QL_Kho = new JButton("QL KHO");
+		QL_Kho.setForeground(Color.WHITE);
+		QL_Kho.setFont(new Font("Tahoma", Font.BOLD, 15));
+		QL_Kho.setBackground(new Color(0, 124, 217));
 		QL_Kho.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cardPanel_TrangOder.setVisible(false);
@@ -208,8 +213,10 @@ public class View extends JFrame {
 		QL_Kho.setBounds(192, 0, 192, 50);
 		panel_1.add(QL_Kho);
 		
-		QL_NV = new JButton("Trang QL NV");
-		QL_NV.setBackground(new Color(0, 255, 64));
+		QL_NV = new JButton("QL NHÂN VIÊN");
+		QL_NV.setForeground(Color.WHITE);
+		QL_NV.setFont(new Font("Tahoma", Font.BOLD, 15));
+		QL_NV.setBackground(new Color(0, 124, 217));
 		QL_NV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cardPanel_TrangOder.setVisible(false);
@@ -226,6 +233,7 @@ public class View extends JFrame {
 		cardPanel_2.setLayout(new CardLayout(0, 0));
 		
 		cardPanel_TrangOder = new JPanel();
+		cardPanel_TrangOder.setBackground(new Color(30, 144, 255));
 		cardPanel_TrangOder.setLayout(null);
 		cardPanel_2.add(cardPanel_TrangOder, "name_1003617356376700");
 		cardPanel_TrangOder.setVisible(true);
@@ -237,7 +245,7 @@ public class View extends JFrame {
 		
 		panel_tang1 = new JPanel();
 		panel_tang1.setLayout(null);
-		panel_tang1.setBackground(new Color(0, 255, 255));
+		panel_tang1.setBackground(Color.WHITE);
 		cardPanel_tang.add(panel_tang1, "name_1003797966362000");
 		panel_tang1.setVisible(true);
 		
@@ -420,7 +428,7 @@ public class View extends JFrame {
 		
 		panel_tang2 = new JPanel();
 		panel_tang2.setLayout(null);
-		panel_tang2.setBackground(new Color(0, 64, 0));
+		panel_tang2.setBackground(Color.WHITE);
 		cardPanel_tang.add(panel_tang2, "name_1003797975289700");
 		panel_tang2.setVisible(false);
 		
@@ -597,10 +605,13 @@ public class View extends JFrame {
 		panel_tang = new JPanel();
 		panel_tang.setBounds(0, 0, 1070, 48);
 		cardPanel_TrangOder.add(panel_tang);
-		panel_tang.setBackground(new Color(255, 128, 0));
+		panel_tang.setBackground(new Color(30, 144, 255));
 		panel_tang.setLayout(null);
 		
-		bt_Tang1 = new JButton(" Tầng 1");
+		bt_Tang1 = new JButton(" TẦNG 1");
+		bt_Tang1.setForeground(Color.WHITE);
+		bt_Tang1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		bt_Tang1.setBackground(new Color(30, 144, 255));
 		bt_Tang1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_tang1.setVisible(true);
@@ -610,7 +621,10 @@ public class View extends JFrame {
 		bt_Tang1.setBounds(0, 0, 151, 48);
 		panel_tang.add(bt_Tang1);
 		
-		bt_Tang2 = new JButton("Tầng 2");
+		bt_Tang2 = new JButton("TẦNG 2");
+		bt_Tang2.setForeground(Color.WHITE);
+		bt_Tang2.setFont(new Font("Tahoma", Font.BOLD, 15));
+		bt_Tang2.setBackground(new Color(30, 144, 255));
 		bt_Tang2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_tang1.setVisible(false);
@@ -621,11 +635,13 @@ public class View extends JFrame {
 		panel_tang.add(bt_Tang2);
 		
 		panel_Mon = new JPanel();
+		panel_Mon.setBackground(new Color(30, 144, 255));
 		panel_Mon.setLayout(null);
 		panel_Mon.setBounds(0, 381, 1070, 48);
 		cardPanel_TrangOder.add(panel_Mon);
 		
-		bt_Nuoc = new JButton("Nước");
+		bt_Nuoc = new JButton("NƯỚC");
+		bt_Nuoc.setForeground(Color.WHITE);
 		bt_Nuoc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Nuoc.setVisible(true);
@@ -635,12 +651,13 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(false);
 			}
 		});
-		bt_Nuoc.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		bt_Nuoc.setBackground(new Color(255, 128, 128));
+		bt_Nuoc.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_Nuoc.setBackground(new Color(30, 144, 255));
 		bt_Nuoc.setBounds(0, 0, 152, 48);
 		panel_Mon.add(bt_Nuoc);
 		
-		bt_Nuong = new JButton("Nướng");
+		bt_Nuong = new JButton("NƯỚNG");
+		bt_Nuong.setForeground(Color.WHITE);
 		bt_Nuong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Nuoc.setVisible(false);
@@ -650,12 +667,13 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(false);
 			}
 		});
-		bt_Nuong.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		bt_Nuong.setBackground(new Color(255, 128, 128));
+		bt_Nuong.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_Nuong.setBackground(new Color(30, 144, 255));
 		bt_Nuong.setBounds(152, 0, 152, 48);
 		panel_Mon.add(bt_Nuong);
 		
-		bt_Lau = new JButton("Lẩu");
+		bt_Lau = new JButton("LẨU");
+		bt_Lau.setForeground(Color.WHITE);
 		bt_Lau.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Nuoc.setVisible(false);
@@ -665,12 +683,13 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(false);
 			}
 		});
-		bt_Lau.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		bt_Lau.setBackground(new Color(255, 128, 128));
+		bt_Lau.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_Lau.setBackground(new Color(30, 144, 255));
 		bt_Lau.setBounds(304, 0, 152, 48);
 		panel_Mon.add(bt_Lau);
 		
-		bt_MonChinh = new JButton("Món Chính");
+		bt_MonChinh = new JButton("MÓN CHÍNH");
+		bt_MonChinh.setForeground(Color.WHITE);
 		bt_MonChinh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Nuoc.setVisible(false);
@@ -680,12 +699,13 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(false);
 			}
 		});
-		bt_MonChinh.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		bt_MonChinh.setBackground(new Color(255, 128, 128));
+		bt_MonChinh.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_MonChinh.setBackground(new Color(30, 144, 255));
 		bt_MonChinh.setBounds(456, 0, 152, 48);
 		panel_Mon.add(bt_MonChinh);
 		
-		bt_TrangMieng = new JButton("Tráng Miệng");
+		bt_TrangMieng = new JButton("TRÁNG MIỆNG");
+		bt_TrangMieng.setForeground(Color.WHITE);
 		bt_TrangMieng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Nuoc.setVisible(false);
@@ -695,9 +715,9 @@ public class View extends JFrame {
 				panel_TrangMieng.setVisible(true);
 			}
 		});
-		bt_TrangMieng.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		bt_TrangMieng.setBackground(new Color(255, 128, 128));
-		bt_TrangMieng.setBounds(608, 0, 152, 48);
+		bt_TrangMieng.setFont(new Font("Tahoma", Font.BOLD, 17));
+		bt_TrangMieng.setBackground(new Color(30, 144, 255));
+		bt_TrangMieng.setBounds(608, 0, 195, 48);
 		panel_Mon.add(bt_TrangMieng);
 		
 		cardPanel_mon = new JPanel();
@@ -706,7 +726,7 @@ public class View extends JFrame {
 		cardPanel_mon.setLayout(new CardLayout(0, 0));
 		
 		panel_Nuong = new JPanel();
-		panel_Nuong.setBackground(new Color(128, 128, 0));
+		panel_Nuong.setBackground(Color.WHITE);
 		cardPanel_mon.add(panel_Nuong, "name_1003838081420800");
 		panel_Nuong.setLayout(null);
 		
@@ -876,7 +896,7 @@ public class View extends JFrame {
 		panel_Nuong.setVisible(false);
 		
 		panel_Lau = new JPanel();
-		panel_Lau.setBackground(new Color(64, 128, 128));
+		panel_Lau.setBackground(Color.WHITE);
 		cardPanel_mon.add(panel_Lau, "name_1003838090254500");
 		panel_Lau.setLayout(null);
 		
@@ -919,7 +939,7 @@ public class View extends JFrame {
 		
 		
 		panel_MonChinh = new JPanel();
-		panel_MonChinh.setBackground(new Color(64, 0, 0));
+		panel_MonChinh.setBackground(Color.WHITE);
 		cardPanel_mon.add(panel_MonChinh, "name_1003838098481500");
 		panel_MonChinh.setLayout(null);
 		
@@ -957,7 +977,7 @@ public class View extends JFrame {
 		panel_MonChinh.setVisible(false);
 		
 		panel_TrangMieng = new JPanel();
-		panel_TrangMieng.setBackground(new Color(0, 64, 64));
+		panel_TrangMieng.setBackground(Color.WHITE);
 		cardPanel_mon.add(panel_TrangMieng, "name_1003838108290000");
 		panel_TrangMieng.setLayout(null);
 		
@@ -996,7 +1016,7 @@ public class View extends JFrame {
 		panel_TrangMieng.setVisible(false);
 		
 		panel_Nuoc = new JPanel();
-		panel_Nuoc.setBackground(new Color(64, 0, 64));
+		panel_Nuoc.setBackground(Color.WHITE);
 		cardPanel_mon.add(panel_Nuoc, "name_1003838116760100");
 		
 		bt_Nuoc1 = new JButton("New button");
@@ -1096,6 +1116,7 @@ public class View extends JFrame {
 		cardPanel_TrangOder.add(panel);
 		
 		JButton bt_ChinhSua = new JButton("Chỉnh sủa");
+		bt_ChinhSua.setBackground(new Color(15, 135, 255));
 		bt_ChinhSua.setBounds(0, 0, 161, 78);
 		bt_ChinhSua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1108,6 +1129,7 @@ public class View extends JFrame {
 		panel.add(bt_ChinhSua);
 		
 		JButton bt_xoa = new JButton("Xóa");
+		bt_xoa.setBackground(new Color(255, 150, 45));
 		bt_xoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -1117,6 +1139,7 @@ public class View extends JFrame {
 		panel.add(bt_xoa);
 		
 		JButton bt_in = new JButton("In");
+		bt_in.setBackground(new Color(0, 215, 55));
 		bt_in.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BufferedImage image = new BufferedImage(card_Panel_bill.getWidth(), card_Panel_bill.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -1142,6 +1165,7 @@ public class View extends JFrame {
 		panel.add(bt_in);
 		
 		JButton bt_KetThuc = new JButton("Kêt thúc");
+		bt_KetThuc.setBackground(new Color(255, 50, 50));
 		bt_KetThuc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -1160,12 +1184,13 @@ public class View extends JFrame {
 		cardPanel_Kho.setVisible(false);
 		
 		cardPanel_QLNV = new JPanel();
-		cardPanel_QLNV.setBackground(new Color(0, 0, 255));
+		cardPanel_QLNV.setBackground(Color.WHITE);
 		cardPanel_QLNV.setLayout(null);
 		cardPanel_2.add(cardPanel_QLNV, "name_1003617377031400");
 		cardPanel_QLNV.setVisible(false);
         
         JLabel lbl_MucLuong = new JLabel("MỨC LƯƠNG");
+        lbl_MucLuong.setForeground(Color.BLUE);
         lbl_MucLuong.setFont(new Font("Tahoma", Font.PLAIN, 20));
         lbl_MucLuong.setBounds(1194, 36, 164, 56);
         cardPanel_QLNV.add(lbl_MucLuong);
@@ -1178,24 +1203,32 @@ public class View extends JFrame {
         cardPanel_QLNV.add(spML);
         
         JLabel lbl_VTCV = new JLabel("Nhập vị trí công việc");
+        lbl_VTCV.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lbl_VTCV.setForeground(new Color(0, 90, 180));
         lbl_VTCV.setBounds(1026, 430, 203, 32);
         cardPanel_QLNV.add(lbl_VTCV);
         
         tf_VTCV = new JTextField();
+        tf_VTCV.setBackground(new Color(180, 215, 255));
         tf_VTCV.setBounds(1026, 462, 203, 32);
         cardPanel_QLNV.add(tf_VTCV);
         tf_VTCV.setColumns(10);
         
         JLabel lbl_ML = new JLabel("Nhập mức lương");
+        lbl_ML.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lbl_ML.setForeground(new Color(0, 90, 180));
         lbl_ML.setBounds(1026, 528, 203, 32);
         cardPanel_QLNV.add(lbl_ML);
         
         tf_ML = new JTextField();
+        tf_ML.setBackground(new Color(180, 215, 255));
         tf_ML.setColumns(10);
         tf_ML.setBounds(1026, 561, 203, 32);
         cardPanel_QLNV.add(tf_ML);
         
         JButton bt_Them = new JButton("Thêm");
+        bt_Them.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bt_Them.setBackground(new Color(15, 135, 255));
         bt_Them.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		insertRow1();
@@ -1205,6 +1238,8 @@ public class View extends JFrame {
         cardPanel_QLNV.add(bt_Them);
         
         JButton bt_Sua = new JButton("Sửa");
+        bt_Sua.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bt_Sua.setBackground(new Color(255, 150, 45));
         bt_Sua.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		updateRow1();
@@ -1214,6 +1249,8 @@ public class View extends JFrame {
         cardPanel_QLNV.add(bt_Sua);
         
         JButton bt_Xoa = new JButton("Xóa");
+        bt_Xoa.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bt_Xoa.setBackground(new Color(240, 240, 240));
         bt_Xoa.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		deleteRow();
@@ -1223,6 +1260,8 @@ public class View extends JFrame {
         cardPanel_QLNV.add(bt_Xoa);
         
         bt_TinhLuong = new JButton("Tính Lương");
+        bt_TinhLuong.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bt_TinhLuong.setBackground(new Color(0, 215, 55));
         bt_TinhLuong.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		TinhLuong();
@@ -1232,31 +1271,38 @@ public class View extends JFrame {
         cardPanel_QLNV.add(bt_TinhLuong);
         
         textField_2 = new JTextField();
+        textField_2.setBackground(new Color(180, 215, 255));
         textField_2.setColumns(10);
         textField_2.setBounds(52, 546, 203, 32);
         cardPanel_QLNV.add(textField_2);
         
         textField_3 = new JTextField();
+        textField_3.setBackground(new Color(180, 215, 255));
         textField_3.setColumns(10);
         textField_3.setBounds(310, 546, 203, 32);
         cardPanel_QLNV.add(textField_3);
         
         textField_4 = new JTextField();
+        textField_4.setBackground(new Color(180, 215, 255));
         textField_4.setColumns(10);
         textField_4.setBounds(553, 546, 203, 32);
         cardPanel_QLNV.add(textField_4);
         
         textField_5 = new JTextField();
+        textField_5.setBackground(new Color(180, 215, 255));
         textField_5.setColumns(10);
         textField_5.setBounds(310, 624, 203, 32);
         cardPanel_QLNV.add(textField_5);
         
         textField_6 = new JTextField();
+        textField_6.setBackground(new Color(180, 215, 255));
         textField_6.setColumns(10);
         textField_6.setBounds(553, 624, 203, 32);
         cardPanel_QLNV.add(textField_6);
         
         bt_Tim = new JButton("Tìm");
+        bt_Tim.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bt_Tim.setBackground(new Color(0, 215, 55));
         bt_Tim.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		searchInfo();
@@ -1266,6 +1312,8 @@ public class View extends JFrame {
         cardPanel_QLNV.add(bt_Tim);
         
         bt_ChinSua = new JButton("Chỉnh sửa");
+        bt_ChinSua.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bt_ChinSua.setBackground(new Color(255, 150, 45));
         bt_ChinSua.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		updateRow();
@@ -1275,6 +1323,8 @@ public class View extends JFrame {
         cardPanel_QLNV.add(bt_ChinSua);
         
         bt_Xoa2 = new JButton("Xóa");
+        bt_Xoa2.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bt_Xoa2.setBackground(new Color(255, 50, 50));
         bt_Xoa2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		deleteRowByID();
@@ -1284,10 +1334,14 @@ public class View extends JFrame {
         cardPanel_QLNV.add(bt_Xoa2);
         
         bt_In = new JButton("In");
+        bt_In.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bt_In.setBackground(new Color(255, 50, 50));
         bt_In.setBounds(698, 440, 53, 32);
         cardPanel_QLNV.add(bt_In);
         
         JButton bt_Them_2_1 = new JButton("Thêm");
+        bt_Them_2_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bt_Them_2_1.setBackground(new Color(15, 135, 255));
         bt_Them_2_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		insertRow();
@@ -1297,26 +1351,37 @@ public class View extends JFrame {
         cardPanel_QLNV.add(bt_Them_2_1);
         
         JLabel lbl1 = new JLabel("Nhập ID");
+        lbl1.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lbl1.setForeground(new Color(0, 90, 180));
         lbl1.setBounds(52, 515, 203, 32);
         cardPanel_QLNV.add(lbl1);
         
         JLabel lbl2 = new JLabel("Họ và Tên");
+        lbl2.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lbl2.setForeground(new Color(0, 90, 180));
         lbl2.setBounds(310, 515, 203, 32);
         cardPanel_QLNV.add(lbl2);
         
         JLabel lbl3 = new JLabel("Vị trí công việc");
+        lbl3.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lbl3.setForeground(new Color(0, 90, 180));
         lbl3.setBounds(553, 515, 203, 32);
         cardPanel_QLNV.add(lbl3);
         
         JLabel lbl4 = new JLabel("Số ngày công");
+        lbl4.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lbl4.setForeground(new Color(0, 90, 180));
         lbl4.setBounds(310, 593, 203, 32);
         cardPanel_QLNV.add(lbl4);
         
         JLabel lbl5 = new JLabel("Tiền lương");
+        lbl5.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lbl5.setForeground(new Color(0, 90, 180));
         lbl5.setBounds(553, 593, 203, 32);
         cardPanel_QLNV.add(lbl5);
         
         JPanel panel_2 = new JPanel();
+        panel_2.setBackground(new Color(15, 135, 255));
         panel_2.setBounds(37, 21, 737, 418);
         cardPanel_QLNV.add(panel_2);
         panel_2.setLayout(null);
@@ -1330,12 +1395,15 @@ public class View extends JFrame {
 
         
         lbl_BangLuong = new JLabel("BẢNG LƯƠNG");
+        lbl_BangLuong.setForeground(Color.WHITE);
         lbl_BangLuong.setBounds(289, 11, 172, 51);
-        lbl_BangLuong.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lbl_BangLuong.setFont(new Font("Tahoma", Font.BOLD, 20));
         panel_2.add(lbl_BangLuong);
         
         JButton bt_COng = new JButton("+\r\n");
-        bt_COng.setBackground(new Color(64, 128, 128));
+        bt_COng.setForeground(Color.WHITE);
+        bt_COng.setFont(new Font("Tahoma", Font.BOLD, 20));
+        bt_COng.setBackground(new Color(0, 90, 180));
         bt_COng.setBounds(674, 38, 53, 32);
         panel_2.add(bt_COng);
         bt_COng.addActionListener(new ActionListener() {
