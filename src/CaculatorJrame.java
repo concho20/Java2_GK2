@@ -1,14 +1,14 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class CaculatorJrame extends JFrame {
@@ -16,8 +16,10 @@ public class CaculatorJrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
+	String tablebill;
+	View v;
 
-	public CaculatorJrame() {
+	public CaculatorJrame(JTable table_bill) {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		setBounds(100, 000, 450, 600);
@@ -172,11 +174,30 @@ public class CaculatorJrame extends JFrame {
 		btn_xoa.setBounds(322, 219, 104, 161);
 		panel.add(btn_xoa);
 		
+
 		JButton btn_ok = new JButton("Ok");
 		btn_ok.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int up = Integer.parseInt(textField.getText());
-
+				
+				JLabel ngu = View.getLblban();
+				for (int i = 1; i < 21; i++) {
+				    if (ngu.getText().equals("Bàn " + i)) {
+				        tablebill = "bill_ban" + i;
+				        break;
+				    }
+				}
+				
+				System.out.println(tablebill + "nguuuuu");
+				try {
+					
+					controller.update(tablebill, table_bill, up);
+					DefaultTableModel modelk = AddTable.AddTable_bill(tablebill);
+					table_bill.setModel(modelk);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn_ok.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -206,5 +227,6 @@ public class CaculatorJrame extends JFrame {
 		});
 		bt_COng.setBounds(335, 75, 50, 50);
 		panel.add(bt_COng);
+
 	}
 }

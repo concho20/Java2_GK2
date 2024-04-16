@@ -2,20 +2,15 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
 
 import java.awt.Color;
 import java.awt.Font;
@@ -28,7 +23,6 @@ import java.awt.CardLayout;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
-import java.awt.Component;
 
 
 
@@ -40,7 +34,7 @@ public class View extends JFrame {
 	private JButton QL_Kho;
 	private JButton QL_NV;
 	
-	private JTable table_bill ;
+	private JTable table_bill;
 	
 	private JPanel panel_tang;
 	private JPanel cardPanel_2;
@@ -72,10 +66,20 @@ public class View extends JFrame {
 	private JButton bt_MonChinh;
 	private JButton bt_TrangMieng;
 	private JPanel panel_Nuoc;
-	private JLabel lblban;
+	private static JLabel lblban;
+	
+	public static JLabel getLblban() {
+		return lblban;
+	}
+
+	public void setLblban(JLabel lblban) {
+		this.lblban = lblban;
+	}
+
 	private JButton bt_Tang1;
 	private JButton bt_Tang2;
 	private JPanel panel_tang2;
+	private JButton bt_ChinhSua;
 	private JButton butonban1_2;
 	private JButton butonban2_2;
 	private JButton butonban3_2;
@@ -86,8 +90,8 @@ public class View extends JFrame {
 	private JButton butonban9_2;
 	private JButton butonban8_2;
 	private JButton butonban10_2;
-	private JTable table_MucLuong;
 	private JTable table_BangLuong;
+	private JTable table_MucLuong;
 	private JButton bt_Nuoc1;
 	private JButton bt_Nuoc2;
 	private JButton bt_Nuoc3;
@@ -155,19 +159,6 @@ public class View extends JFrame {
 	static JLabel lblthanhtien;
 	
 	String tablebill;
-	private JLabel lbl_Nuoc5;
-	private JLabel lbl_Nuoc6;
-	private JLabel lbl_Nuoc7;
-	private JLabel lbl_TenNuoc2;
-	private JLabel lbl_TenNuoc3;
-	private JLabel lbl_TenNuoc4;
-	private JLabel lbl_TenNuoc5;
-	private JLabel lbl_TenNuoc6;
-	private JLabel lbl_TenNuoc7;
-	private JLabel lbl_TenNuoc8;
-	private JLabel lbl_Nuoc8;
-	private JScrollPane spBL;
-	private JLabel lbl_BangLuong;
 	
 	public View() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -237,7 +228,7 @@ public class View extends JFrame {
 		
 		panel_tang1 = new JPanel();
 		panel_tang1.setLayout(null);
-		panel_tang1.setBackground(new Color(0, 255, 255));
+		panel_tang1.setBackground(Color.RED);
 		cardPanel_tang.add(panel_tang1, "name_1003797966362000");
 		panel_tang1.setVisible(true);
 		
@@ -713,13 +704,12 @@ public class View extends JFrame {
 		bt_Nuong1 = new JButton("beer");
 		
 		bt_Nuong1.addActionListener(new ActionListener() {
-		int a;
+
 			public void actionPerformed(ActionEvent e) {
-				a = 1;
 			    String tenhang = "Beer";
 			    int dongia = 15000;
 			    int soluong = 1;
-			    int thanhtien = dongia * soluong;
+			    float thanhtien = dongia * soluong;
 			    model md = new model(tenhang, dongia, soluong, thanhtien);
 
 			    try {
@@ -745,6 +735,26 @@ public class View extends JFrame {
 		bt_Nuong2 = new JButton("New button");
 		bt_Nuong2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String tenhang = "asdasd";
+			    int dongia = 30000;
+			    int soluong = 1;
+			    float thanhtien = dongia * soluong;
+			    model md = new model(tenhang, dongia, soluong, thanhtien);
+
+			    try {
+			    	for (int i = 1; i < 21; i++) {
+						if(lblban.getText() == "Bàn " + i) {
+							tablebill = "bill_ban" + i;
+						}
+					}
+			    	
+			        controller.insert(md,tablebill); // Thêm mục mới vào cơ sở dữ liệu
+
+			        DefaultTableModel modelk = AddTable.AddTable_bill(tablebill);
+			        table_bill.setModel(modelk); // Cập nhật dữ liệu trên bảng sau khi thêm vào cơ sở dữ liệu
+			    } catch (SQLException e1) {
+			        e1.printStackTrace();
+			    }	
 			}
 		});
 		bt_Nuong2.setBounds(371, 11, 89, 70);
@@ -777,102 +787,6 @@ public class View extends JFrame {
 		bt_Nuong8 = new JButton("New button");
 		bt_Nuong8.setBounds(849, 168, 89, 70);
 		panel_Nuong.add(bt_Nuong8);
-		
-		JLabel lbl_TenNuoc1 = new JLabel("Bàn 6");
-		lbl_TenNuoc1.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_TenNuoc1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_TenNuoc1.setBounds(88, 106, 173, 25);
-		panel_Nuong.add(lbl_TenNuoc1);
-		
-		JLabel lbl_Nuoc1 = new JLabel("Bàn 6");
-		lbl_Nuoc1.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_Nuoc1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_Nuoc1.setBounds(88, 81, 173, 25);
-		panel_Nuong.add(lbl_Nuoc1);
-		
-		JLabel lbl_Nuoc2 = new JLabel("Bàn 6");
-		lbl_Nuoc2.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_Nuoc2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_Nuoc2.setBounds(326, 81, 173, 25);
-		panel_Nuong.add(lbl_Nuoc2);
-		
-		JLabel lbl_Nuoc3 = new JLabel("Bàn 6");
-		lbl_Nuoc3.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_Nuoc3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_Nuoc3.setBounds(567, 81, 173, 25);
-		panel_Nuong.add(lbl_Nuoc3);
-		
-		JLabel lbl_Nuoc4 = new JLabel("Bàn 6");
-		lbl_Nuoc4.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_Nuoc4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_Nuoc4.setBounds(810, 81, 173, 25);
-		panel_Nuong.add(lbl_Nuoc4);
-		
-		lbl_Nuoc5 = new JLabel("Bàn 6");
-		lbl_Nuoc5.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_Nuoc5.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_Nuoc5.setBounds(88, 237, 173, 25);
-		panel_Nuong.add(lbl_Nuoc5);
-		
-		lbl_Nuoc6 = new JLabel("Bàn 6");
-		lbl_Nuoc6.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_Nuoc6.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_Nuoc6.setBounds(326, 237, 173, 25);
-		panel_Nuong.add(lbl_Nuoc6);
-		
-		lbl_Nuoc7 = new JLabel("Bàn 6");
-		lbl_Nuoc7.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_Nuoc7.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_Nuoc7.setBounds(567, 237, 173, 25);
-		panel_Nuong.add(lbl_Nuoc7);
-		
-		lbl_TenNuoc2 = new JLabel("Bàn 6");
-		lbl_TenNuoc2.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_TenNuoc2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_TenNuoc2.setBounds(326, 106, 173, 25);
-		panel_Nuong.add(lbl_TenNuoc2);
-		
-		lbl_TenNuoc3 = new JLabel("Bàn 6");
-		lbl_TenNuoc3.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_TenNuoc3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_TenNuoc3.setBounds(567, 106, 173, 25);
-		panel_Nuong.add(lbl_TenNuoc3);
-		
-		lbl_TenNuoc4 = new JLabel("Bàn 6");
-		lbl_TenNuoc4.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_TenNuoc4.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_TenNuoc4.setBounds(810, 106, 173, 25);
-		panel_Nuong.add(lbl_TenNuoc4);
-		
-		lbl_TenNuoc5 = new JLabel("Bàn 6");
-		lbl_TenNuoc5.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_TenNuoc5.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_TenNuoc5.setBounds(88, 263, 173, 25);
-		panel_Nuong.add(lbl_TenNuoc5);
-		
-		lbl_TenNuoc6 = new JLabel("Bàn 6");
-		lbl_TenNuoc6.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_TenNuoc6.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_TenNuoc6.setBounds(326, 263, 173, 25);
-		panel_Nuong.add(lbl_TenNuoc6);
-		
-		lbl_TenNuoc7 = new JLabel("Bàn 6");
-		lbl_TenNuoc7.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_TenNuoc7.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_TenNuoc7.setBounds(567, 263, 173, 25);
-		panel_Nuong.add(lbl_TenNuoc7);
-		
-		lbl_TenNuoc8 = new JLabel("Bàn 6");
-		lbl_TenNuoc8.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_TenNuoc8.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_TenNuoc8.setBounds(810, 263, 173, 25);
-		panel_Nuong.add(lbl_TenNuoc8);
-		
-		lbl_Nuoc8 = new JLabel("Bàn 6");
-		lbl_Nuoc8.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_Nuoc8.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_Nuoc8.setBounds(810, 237, 173, 25);
-		panel_Nuong.add(lbl_Nuoc8);
 		panel_Nuong.setVisible(false);
 		
 		panel_Lau = new JPanel();
@@ -1095,12 +1009,16 @@ public class View extends JFrame {
 		panel.setBounds(1070, 655, 490, 78);
 		cardPanel_TrangOder.add(panel);
 		
-		JButton bt_ChinhSua = new JButton("Chỉnh sủa");
+		bt_ChinhSua = new JButton("Chỉnh sủa");
 		bt_ChinhSua.setBounds(0, 0, 161, 78);
 		bt_ChinhSua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CaculatorJrame c = new CaculatorJrame();
-				c.setVisible(true);
+				
+				new Thread(()->{
+					CaculatorJrame c = new CaculatorJrame(table_bill);
+					c.setVisible(true);
+		        }).start();
+				
 			}
 		});
 		panel.setLayout(null);
@@ -1110,6 +1028,21 @@ public class View extends JFrame {
 		JButton bt_xoa = new JButton("Xóa");
 		bt_xoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				for (int i = 1; i < 21; i++) {
+					if(lblban.getText() == "Bàn " + i) {
+						tablebill = "bill_ban" + i;
+					}
+				}
+				
+				try {
+					controller.delete(tablebill, table_bill);
+					DefaultTableModel modelk = AddTable.AddTable_bill(tablebill);
+			        table_bill.setModel(modelk);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		bt_xoa.setBounds(159, 0, 111, 78);
@@ -1160,10 +1093,24 @@ public class View extends JFrame {
 		cardPanel_Kho.setVisible(false);
 		
 		cardPanel_QLNV = new JPanel();
-		cardPanel_QLNV.setBackground(new Color(0, 0, 255));
+		cardPanel_QLNV.setBackground(new Color(0, 255, 0));
 		cardPanel_QLNV.setLayout(null);
 		cardPanel_2.add(cardPanel_QLNV, "name_1003617377031400");
 		cardPanel_QLNV.setVisible(false);
+		
+		
+		table_BangLuong = new JTable();
+		table_BangLuong.setForeground(new Color(0, 0, 0));
+		table_BangLuong.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        JScrollPane spBL = new JScrollPane(table_BangLuong);
+        spBL.setBounds(52, 103, 704, 331);
+        cardPanel_QLNV.add(spBL);
+        table_BangLuong.setEnabled(false);
+        
+        JLabel lbl_BangLuong = new JLabel("BẢNG LƯƠNG");
+        lbl_BangLuong.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lbl_BangLuong.setBounds(310, 36, 164, 56);
+        cardPanel_QLNV.add(lbl_BangLuong);          
         
         JLabel lbl_MucLuong = new JLabel("MỨC LƯƠNG");
         lbl_MucLuong.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -1198,36 +1145,20 @@ public class View extends JFrame {
         JButton bt_Them = new JButton("Thêm");
         bt_Them.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		insertRow1();
         	}
         });
         bt_Them.setBounds(1313, 462, 129, 32);
         cardPanel_QLNV.add(bt_Them);
         
         JButton bt_Sua = new JButton("Sửa");
-        bt_Sua.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		updateRow1();
-        	}
-        });
         bt_Sua.setBounds(1313, 561, 129, 32);
         cardPanel_QLNV.add(bt_Sua);
         
         JButton bt_Xoa = new JButton("Xóa");
-        bt_Xoa.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		deleteRow();
-        	}
-        });
         bt_Xoa.setBounds(1313, 650, 129, 32);
         cardPanel_QLNV.add(bt_Xoa);
         
         bt_TinhLuong = new JButton("Tính Lương");
-        bt_TinhLuong.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		TinhLuong();
-        	}
-        });
         bt_TinhLuong.setBounds(559, 440, 129, 32);
         cardPanel_QLNV.add(bt_TinhLuong);
         
@@ -1259,27 +1190,18 @@ public class View extends JFrame {
         bt_Tim = new JButton("Tìm");
         bt_Tim.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		searchInfo();
+//        		ControllerQLNV c = new ControllerQLNV();
+//        		c.searchInfo();
         	}
         });
         bt_Tim.setBounds(52, 613, 129, 32);
         cardPanel_QLNV.add(bt_Tim);
         
         bt_ChinSua = new JButton("Chỉnh sửa");
-        bt_ChinSua.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		updateRow();
-        	}
-        });
         bt_ChinSua.setBounds(449, 677, 129, 32);
         cardPanel_QLNV.add(bt_ChinSua);
         
         bt_Xoa2 = new JButton("Xóa");
-        bt_Xoa2.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		deleteRowByID();
-        	}
-        });
         bt_Xoa2.setBounds(627, 677, 129, 32);
         cardPanel_QLNV.add(bt_Xoa2);
         
@@ -1288,13 +1210,16 @@ public class View extends JFrame {
         cardPanel_QLNV.add(bt_In);
         
         JButton bt_Them_2_1 = new JButton("Thêm");
-        bt_Them_2_1.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		insertRow();
-        	}
-        });
         bt_Them_2_1.setBounds(266, 677, 129, 32);
         cardPanel_QLNV.add(bt_Them_2_1);
+        
+        JButton bt_Tru = new JButton("-");
+        bt_Tru.setBounds(647, 71, 53, 32);
+        cardPanel_QLNV.add(bt_Tru);
+        
+        JButton bt_COng = new JButton("+\r\n");
+        bt_COng.setBounds(703, 71, 53, 32);
+        cardPanel_QLNV.add(bt_COng);
         
         JLabel lbl1 = new JLabel("Nhập ID");
         lbl1.setBounds(52, 515, 203, 32);
@@ -1315,34 +1240,6 @@ public class View extends JFrame {
         JLabel lbl5 = new JLabel("Tiền lương");
         lbl5.setBounds(553, 593, 203, 32);
         cardPanel_QLNV.add(lbl5);
-        
-        JPanel panel_2 = new JPanel();
-        panel_2.setBounds(37, 21, 737, 418);
-        cardPanel_QLNV.add(panel_2);
-        panel_2.setLayout(null);
-        
-        table_BangLuong = new JTable();
-        table_BangLuong.setForeground(new Color(0, 0, 0));
-        table_BangLuong.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        spBL = new JScrollPane(table_BangLuong);
-        spBL.setBounds(10, 73, 717, 334);
-        panel_2.add(spBL);
-
-        
-        lbl_BangLuong = new JLabel("BẢNG LƯƠNG");
-        lbl_BangLuong.setBounds(289, 11, 172, 51);
-        lbl_BangLuong.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        panel_2.add(lbl_BangLuong);
-        
-        JButton bt_COng = new JButton("+\r\n");
-        bt_COng.setBackground(new Color(64, 128, 128));
-        bt_COng.setBounds(674, 38, 53, 32);
-        panel_2.add(bt_COng);
-        bt_COng.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		updateCong();
-        	}
-        });
 	}
 	
 	public JTable getTable_BangLuong() {
@@ -1353,6 +1250,34 @@ public class View extends JFrame {
 	    return table_MucLuong;
 	}
 	
+	public JTextField getVTCV1() {
+	    return tf_VTCV;
+	}
+	
+	public JTextField getML1() {
+	    return tf_ML;
+	}
+	
+	public JTextField getID() {
+	    return textField_2;
+	}
+	
+	public JTextField getHVT() {
+	    return textField_3;
+	}
+	
+	public JTextField getVTCV2() {
+	    return textField_4;
+	}
+	
+	public JTextField getSNC() {
+	    return textField_5;
+	}
+	
+	public JTextField getTL() {
+	    return textField_6;
+	}
+	
 	public void setTable_BangLuong(JTable table_BangLuong) {
 	    this.table_BangLuong = table_BangLuong;
 	}
@@ -1360,309 +1285,33 @@ public class View extends JFrame {
 	public void setTable_MucLuong(JTable table_MucLuong) {
 	    this.table_MucLuong = table_MucLuong;
 	}
-	
-	private void searchInfo() {
-        try {
-            Connection connection = ConnectionDatabase.connect();
-            if (connection != null) {
-                String id = textField_2.getText();
-                String sql = "SELECT * FROM BangLuong WHERE ID = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, id);
-                ResultSet resultSet = preparedStatement.executeQuery();
 
-                if (resultSet.next()) {
-                    textField_3.setText(resultSet.getString("Họ và tên"));
-                    textField_4.setText(resultSet.getString("Vị trí công việc"));
-                    textField_5.setText(resultSet.getString("Số ngày công"));                   
-                    textField_6.setText(resultSet.getString("Tiền lương"));
-                } else {
-                    JOptionPane.showMessageDialog(null, "Bạn đã nhập sai ID");
-                }
-                ConnectionDatabase.disconnect(connection);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } 
-    }
-	
-	private void insertRow() {
-        String value1 = textField_2.getText();
-        String value2 = textField_3.getText();
-        String value3 = textField_4.getText();
-        String value4 = textField_5.getText();
-        String value5 = textField_6.getText();
-        
-        if (value1.isEmpty() || value2.isEmpty() || value3.isEmpty() || value4.isEmpty() 
-        		|| value5.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá trị cho tất cả các trường.");
-            return;
-        }
+	public void setVTCV1(JTextField tf_VTCV) {
+	    this.tf_VTCV = tf_VTCV;
+	}
 
-        try {
-            Connection connection = ConnectionDatabase.connect();
-            java.sql.Statement statement = connection.createStatement();
-            DefaultTableModel model = (DefaultTableModel) table_BangLuong.getModel();
-       
-            String updateQuery ="INSERT INTO BangLuong (ID, \"Họ và tên\", \"Vị trí công việc\", \"Số ngày công\", \"Tiền lương\") " + "VALUES ( '" + value1 + 
-            					"', '" + value2 + "', '" + value3 + "', '" + value4 + "', '" + value5 + "')" ;
-            model.addRow(new Object[]{value1, value2, value3, value4, value5});
-            statement.executeUpdate(updateQuery);	
-	        statement.close();
-	        connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-	
-	private void deleteRowByID() {
-        String idToDelete = textField_2.getText();
+	public void setML1(JTextField tf_ML) {
+	    this.tf_ML = tf_ML;
+	}
 
-        if (idToDelete.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập ID cần xóa.");
-            return;
-        }
+	public void setID(JTextField textField_2) {
+	    this.textField_2 = textField_2;
+	}
 
-        try {
-            DefaultTableModel model = (DefaultTableModel) table_BangLuong.getModel();
-            
-            Connection connection = ConnectionDatabase.connect();
-            java.sql.Statement statement = connection.createStatement();
-            
-            int rowCount = model.getRowCount();
-            int rowIndexToDelete = -1;
-            for (int i = 0; i < rowCount; i++) {
-                int idInTable = (int) model.getValueAt(i, 0);
-                if (idInTable == Integer.parseInt(idToDelete)) {
-                    rowIndexToDelete = i;
-                    break;
-                }
-            }
-            if (rowIndexToDelete == -1) {
-                JOptionPane.showMessageDialog(this, "Không tìm thấy ID trong bảng.");
-                return;
-            }
-            model.removeRow(rowIndexToDelete);
-            String deleteQuery = "DELETE FROM BangLuong WHERE ID = " + idToDelete;
-            statement.executeUpdate(deleteQuery);        
-            statement.close();
-            connection.close();
-        } catch (SQLException | NumberFormatException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi xóa hàng: " + ex.getMessage());
-        }
-    }
-    
-	private void updateRow() {
-    	String newValue1 = textField_2.getText();
-        String newValue2 = textField_3.getText();
-        String newValue3 = textField_4.getText();
-        String newValue4 = textField_5.getText();
-        String newValue5 = textField_6.getText();
+	public void setHVT(JTextField textField_3) {
+	    this.textField_3 = textField_3;
+	}
 
-        if (newValue1.isEmpty() || newValue2.isEmpty() || newValue3.isEmpty() || newValue4.isEmpty() 
-        		|| newValue5.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá trị cho tất cả các trường.");
-            return;
-        }
+	public void setVTCV2(JTextField textField_4) {
+	    this.textField_4 = textField_4;
+	}
 
-        try {
-            DefaultTableModel model = (DefaultTableModel) table_BangLuong.getModel();
-            Connection connection = ConnectionDatabase.connect();
-            java.sql.Statement statement = connection.createStatement();
-            int rowCount = model.getRowCount();
-            int rowIndexToUpdate = -1;
-            for (int i = 0; i < rowCount; i++) {
-                int idInTable = (int) model.getValueAt(i, 0);
-                if (idInTable == Integer.parseInt(newValue1)) {
-                    rowIndexToUpdate = i;
-                    break;
-                }
-            }
-            if (rowIndexToUpdate == -1) {
-                JOptionPane.showMessageDialog(this, "Không tìm thấy ID trong bảng.");
-                return;
-            }
+	public void setSNC(JTextField textField_5) {
+	    this.textField_5 = textField_5;
+	}
 
-            model.setValueAt(newValue1, rowIndexToUpdate, 0); 
-            model.setValueAt(newValue2, rowIndexToUpdate, 1);  
-            model.setValueAt(newValue3, rowIndexToUpdate, 2); 
-            model.setValueAt(newValue4, rowIndexToUpdate, 3);
-            model.setValueAt(newValue5, rowIndexToUpdate, 4);
+	public void setTL(JTextField textField_6) {
+	    this.textField_6 = textField_6;
+	}
 
-            String updateQuery ="UPDATE BangLuong SET ID = '" + newValue1 + "', \"Họ và tên\" = '" 
-                    + newValue2 + "', \"Vị trí công việc\" = '" + newValue3 + "', \"Số ngày công\" = '" + newValue4 
-                    + "', \"Tiền lương\" = '" + newValue5 + "' WHERE ID = '" + newValue1 + "'";
-            statement.executeUpdate(updateQuery);
-            
-            statement.close();
-            connection.close();
-        } catch (SQLException | NumberFormatException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật thông tin: " + ex.getMessage());
-        }
-    }
-	
-	private void insertRow1() {
-        String value1 =tf_VTCV.getText();
-        String value2 = tf_ML.getText();
-        
-        if (value1.isEmpty() || value2.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá trị cho tất cả các trường.");
-            return;
-        }
-
-        try {
-            Connection connection = ConnectionDatabase.connect();
-            java.sql.Statement statement = connection.createStatement();
-            DefaultTableModel model = (DefaultTableModel) table_MucLuong.getModel();
-       
-            String updateQuery ="INSERT INTO MucLuong (\"Vị trí công việc\", \"Mức lương\") " + "VALUES ( '" + value1 + 
-            					"', '" + value2  + "')" ;
-            model.addRow(new Object[]{value1, value2});
-            statement.executeUpdate(updateQuery);	
-	        statement.close();
-	        connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-	
-	private void updateRow1() {
-    	String newValue1 = tf_VTCV.getText();
-        String newValue2 =tf_ML.getText();
-
-        if (newValue1.isEmpty() || newValue2.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá trị cho tất cả các trường.");
-            return;
-        }
-
-        try {
-            DefaultTableModel model = (DefaultTableModel) table_MucLuong.getModel();
-            Connection connection = ConnectionDatabase.connect();
-            java.sql.Statement statement = connection.createStatement();
-            int rowCount = model.getRowCount();
-            int rowIndexToUpdate = -1;
-            for (int i = 0; i < rowCount; i++) {
-                String idInTable = (String) model.getValueAt(i, 0);
-                if (idInTable.equals(newValue1)) {
-                    rowIndexToUpdate = i;
-                    break;
-                }
-            }
-            if (rowIndexToUpdate == -1) {
-                JOptionPane.showMessageDialog(this, "Không tìm thấy Vị trí công việc trong bảng.");
-                return;
-            }
-
-            model.setValueAt(newValue1, rowIndexToUpdate, 0); 
-            model.setValueAt(newValue2, rowIndexToUpdate, 1);  
-
-            String updateQuery = "UPDATE MucLuong SET \"Vị trí công việc\" = '" + newValue1 + "', \"Mức lương\" = '" 
-                    + newValue2 + "' WHERE \"Vị trí công việc\" = '" + newValue1 + "'";
-            statement.executeUpdate(updateQuery);
-            
-            statement.close();
-            connection.close();
-        } catch (SQLException | NumberFormatException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật thông tin: " + ex.getMessage());
-        }
-    }
-	private void deleteRow() {
-        String a = tf_VTCV.getText();
-
-        if (a.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập Vị trí công việc cần xóa.");
-            return;
-        }
-
-        try {
-            DefaultTableModel model = (DefaultTableModel) table_MucLuong.getModel();
-            
-            Connection connection = ConnectionDatabase.connect();
-            java.sql.Statement statement = connection.createStatement();
-            
-            int rowCount = model.getRowCount();
-            int rowIndexToDelete = -1;
-            for (int i = 0; i < rowCount; i++) {
-                String idInTable = (String) model.getValueAt(i, 0);
-                if (idInTable.equals(a)) {
-                	rowIndexToDelete = i;
-                    break;
-                }
-            }
-            if (rowIndexToDelete == -1) {
-                JOptionPane.showMessageDialog(this, "Không tìm thấy Vị trí công việc trong bảng.");
-                return;
-            }
-            model.removeRow(rowIndexToDelete);
-            String deleteQuery = "DELETE FROM MucLuong WHERE \"Vị trí công việc\" = '" + a + "'";
-            statement.executeUpdate(deleteQuery);        
-            statement.close();
-            connection.close();
-        } catch (SQLException | NumberFormatException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi xóa hàng: " + ex.getMessage());
-        }
-    }
-	
-	private void updateCong() {
-        try {
-            DefaultTableModel model = (DefaultTableModel) table_BangLuong.getModel();
-            Connection connection = ConnectionDatabase.connect();
-            java.sql.Statement statement = connection.createStatement();
-            int rowCount = model.getRowCount();
-            for (int i = 0; i < rowCount; i++) {
-            	int getID = (int) model.getValueAt(i, 0);
-                int oldvalue = (int) model.getValueAt(i, 3);
-                int newValue = oldvalue + 1; 
-                model.setValueAt(newValue, i, 3); 
-                String updateQuery = "UPDATE BangLuong SET \"Số ngày công\" = '" 
-                        + newValue + "' WHERE ID = '" + getID + "'";
-                statement.executeUpdate(updateQuery);
-            }  
-            statement.close();
-            connection.close();
-        } catch (SQLException | NumberFormatException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật thông tin: " + ex.getMessage());
-        }
-    }
-	
-	private void TinhLuong() {
-    	try {
-    		DefaultTableModel model = (DefaultTableModel) table_BangLuong.getModel();
-    		DefaultTableModel model1 = (DefaultTableModel) table_MucLuong.getModel();
-    		Connection connection = ConnectionDatabase.connect();
-            java.sql.Statement statement = connection.createStatement();
-            for(int i = 0; i < model.getRowCount(); i++) {
-            	int getID = (int) model.getValueAt(i, 0);
-        		int vtcv1Idex = -1;
-            	String vtcv = (String) model.getValueAt(i, 2);
-            	for (int j = 0; j < model1.getRowCount(); j++) {
-            		String vtcv1 = (String) model1.getValueAt(j, 0);
-            		if (vtcv.equals(vtcv1)) {
-                		vtcv1Idex = j;
-            			break;
-            		}
-            	}
-            	if (vtcv1Idex == -1) {
-            		return;
-            	}
-            	int mln = (int) model1.getValueAt(vtcv1Idex, 1); 
-            	int snc = (int) model.getValueAt(i, 3);
-            	int tl = snc*mln;
-            	model.setValueAt(tl, i, 4);
-            	String updateQuery = "UPDATE BangLuong SET \"Tiền Lương\" = '" 
-                        + tl + "' WHERE ID = '" + getID + "'";
-                statement.executeUpdate(updateQuery);
-
-            }
-            statement.close();
-            connection.close();
-    	} catch (SQLException ex) {
-            ex.printStackTrace();
-    	}
-    }
 }

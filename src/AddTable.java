@@ -104,17 +104,17 @@ public class AddTable {
 	            
 	            table_MucLuong.setModel(tableModel);
 
-		            for (int columnIndex = 0; columnIndex < table_MucLuong.getColumnCount(); columnIndex++) {
-		                TableColumn column = table_MucLuong.getColumnModel().getColumn(columnIndex);
-		                int maxWidth = 0;
-		                for (int rowIndex = 0; rowIndex < table_MucLuong.getRowCount(); rowIndex++) {
-		                    TableCellRenderer cellRenderer = table_MucLuong.getCellRenderer(rowIndex, columnIndex);
-		                    Object value = table_MucLuong.getValueAt(rowIndex, columnIndex);
-		                    Component cellComponent = cellRenderer.getTableCellRendererComponent(table_MucLuong, value, false, false, rowIndex, columnIndex);
-		                    maxWidth = Math.max(cellComponent.getPreferredSize().width, maxWidth);
-		                }
-		                column.setPreferredWidth(maxWidth + 10); 
-		            }
+	            for (int columnIndex = 0; columnIndex < table_MucLuong.getColumnCount(); columnIndex++) {
+	                TableColumn column = table_MucLuong.getColumnModel().getColumn(columnIndex);
+	                int maxWidth = 0;
+	                for (int rowIndex = 0; rowIndex < table_MucLuong.getRowCount(); rowIndex++) {
+	                    TableCellRenderer cellRenderer = table_MucLuong.getCellRenderer(rowIndex, columnIndex);
+	                    Object value = table_MucLuong.getValueAt(rowIndex, columnIndex);
+	                    Component cellComponent = cellRenderer.getTableCellRendererComponent(table_MucLuong, value, false, false, rowIndex, columnIndex);
+	                    maxWidth = Math.max(cellComponent.getPreferredSize().width, maxWidth);
+	                }
+	                column.setPreferredWidth(maxWidth + 10); 
+	            }
 	            
 	            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 	            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
@@ -160,7 +160,7 @@ public class AddTable {
                     rowData[i - 1] = resultSet.getObject(i);
                     
                 }             
-                tong += resultSet.getInt("Thành tiền");
+                tong += resultSet.getFloat("thanh_tien");
                 tableModel.addRow(rowData);
             }
             String texttong = Float.toString(tong);

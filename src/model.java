@@ -3,17 +3,21 @@ public class model {
 	private String tenhang;
 	private int dongia;
 	private int soluong;
-	private int thanhtien;
+	private float thanhtien;
 	
 
 
-	public model(String tenhang, int dongia, int soluong, int thanhtien) {
+	public model(String tenhang, int dongia, int soluong, float thanhtien) {
         this.tenhang = tenhang;
         this.dongia = dongia;
         this.soluong = soluong;
         this.thanhtien = thanhtien;
         
     }
+
+	public model(Object tenhang2, Object object, Object object2, Object object3, String texttong2) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getTenhang() {
 		return tenhang;
@@ -39,11 +43,11 @@ public class model {
 		this.soluong = soluong;
 	}
 
-	public int getThanhtien() {
+	public float getThanhtien() {
 		return thanhtien;
 	}
 
-	public void setThanhtien(int thanhtien) {
+	public void setThanhtien(float thanhtien) {
 		this.thanhtien = thanhtien;
 	}
 
