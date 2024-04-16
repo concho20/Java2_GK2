@@ -1335,7 +1335,7 @@ public class View extends JFrame {
         panel_2.add(lbl_BangLuong);
         
         JButton bt_COng = new JButton("+\r\n");
-        bt_COng.setBackground(new Color(240, 240, 240));
+        bt_COng.setBackground(new Color(64, 128, 128));
         bt_COng.setBounds(674, 38, 53, 32);
         panel_2.add(bt_COng);
         bt_COng.addActionListener(new ActionListener() {
